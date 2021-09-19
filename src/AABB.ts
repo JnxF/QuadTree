@@ -44,7 +44,7 @@ class AABB implements Rendereable {
         ctx.beginPath();
         ctx.rect(this.x - this.w, this.y - this.h, this.w * 2, this.h * 2);
         ctx.lineWidth = 0.5;
-        ctx.strokeStyle = "rgba(255,255,255,0.5)";
+        ctx.strokeStyle = "rgba(255,255,255,0.2)";
         ctx.stroke();
     }
 

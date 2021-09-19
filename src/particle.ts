@@ -12,7 +12,7 @@ class Particle implements Rendereable {
     constructor(p: XY, r: number, ctx: CanvasRenderingContext2D) {
         this.p = p;
         this.r = r;
-        this.v = [Math.random() * 3 - 1.5, Math.random() * 3 - 1.5];
+        this.v = [Math.random() * 8 - 4, Math.random() * 8 - 4];
         this.ctx = ctx;
         this.opacity = 1;
         this.color = 220 + (Math.random() * 80 - 40);
@@ -23,7 +23,7 @@ class Particle implements Rendereable {
         this.p[0] += this.v[0];
         this.p[1] += this.v[1];
 
-        // p %= [WIDTH, HEIGHT]
+        // p %= [WIDTH, HEIGHT] 
         this.p[0] %= WIDTH;
         this.p[1] %= HEIGHT;
 

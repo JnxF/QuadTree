@@ -5,19 +5,17 @@ class Particle implements Rendereable {
     p: XY;
     v: Velocity;
     r: number;
-    m: number;
     ctx: CanvasRenderingContext2D;
-    color: string;
+    color: number;
     opacity: number;
 
     constructor(p: XY, r: number, ctx: CanvasRenderingContext2D) {
         this.p = p;
         this.r = r;
-        this.m = r;
         this.v = [Math.random() * 3 - 1.5, Math.random() * 3 - 1.5];
         this.ctx = ctx;
         this.opacity = 1;
-        this.color = `rgba(255,0,0,${this.opacity})`;
+        this.color = 220 + (Math.random() * 80 - 40);
     }
 
     update() {
@@ -29,14 +27,14 @@ class Particle implements Rendereable {
         this.p[0] %= WIDTH;
         this.p[1] %= HEIGHT;
 
-        this.opacity *= 0.95;
-        this.color = `rgba(255,0,0,${this.opacity})`;
+        this.opacity *= 0.99;
     }
 
     draw() {
         ctx.beginPath();
         ctx.arc(this.p[0], this.p[1], this.r, 0, 2 * Math.PI);
-        ctx.fillStyle = this.color;
+        ctx.fillStyle = `hsla(${this.color}, 100%, 60%, ${this.opacity})`;
+
         ctx.fill();
     }
 
@@ -47,14 +45,11 @@ class Particle implements Rendereable {
         const v1 = this.v;
         const v2 = other.v;
 
-        const m1 = this.m;
-        const m2 = other.m;
-
         const x1MinusX2 = minus(x1, x2);
         const v1MinusV2 = minus(v1, v2);
 
-        const top = 2 * m2 * dotProduct(v1MinusV2, x1MinusX2);
-        const bottom = (m1 + m2) * squaredLength(x1MinusX2);
+        const top = 2 * other.r * dotProduct(v1MinusV2, x1MinusX2);
+        const bottom = (this.r + other.r) * squaredLength(x1MinusX2);
 
         const factor = top / bottom;
 

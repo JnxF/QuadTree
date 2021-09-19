@@ -13,7 +13,7 @@ The code is based on The Coding Train's [Quadtree video series](https://www.yout
 
 ## Installation
 
-Nagivate to the root folder and install the dependencies with [npm](https://www.npmjs.com/).
+Navigate to the root folder and install the dependencies with [npm](https://www.npmjs.com/).
 
 ```bash
 npm install

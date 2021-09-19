@@ -45,9 +45,6 @@ function draw() {
     window.requestAnimationFrame(draw);
 }
 
-resize();
-init();
-
 /**
  * On resize, adapt the height and width of the particles
  */
@@ -70,3 +67,6 @@ function resize() {
 }
 
 window.onresize = resize
+
+resize();
+init();
